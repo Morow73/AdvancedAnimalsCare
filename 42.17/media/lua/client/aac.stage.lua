@@ -1,27 +1,6 @@
 AAC = AAC or {}
 AAC.STAGE = AAC.STAGE or {}
 
----return whether a month is inside a mating range.
----@param month integer
----@param startMonth integer
----@param endMonth integer
----@return boolean
-local function IsMonthInMatingRange(month, startMonth, endMonth)
-    if not month or not startMonth or not endMonth then
-        return false
-    end
-
-    if startMonth == 0 then
-        return true
-    end
-
-    if startMonth <= endMonth then
-        return month >= startMonth and month <= endMonth
-    end
-
-    return month >= startMonth or month <= endMonth
-end
-
 ---return pregnant animal percentage of pregnancy time
 ---@param animal IsoAnimal
 ---@return number|nil
@@ -106,7 +85,7 @@ function AAC.STAGE.GetAnimalMatingStatus(animal)
     local lastPregnancy = data:getLastPregnancyPeriod()
     local stage
 
-    if lastPregnancy then
+    if lastPregnancy and lastPregnancy ~= -1 then
         stage = getText("IGUI_Animal_TooSoonForBaby") .." (" .. lastPregnancy .. " " .. getText("IGUI_Gametime_days") .. ")"
     else
         if animal:getData():getDaysSurvived() >= animal:getMinAgeForBaby() then
@@ -138,11 +117,11 @@ function AAC.STAGE.GetAnimalMaleImpregnateStatus(animal)
     ---@diagnostic disable-next-line: param-type-mismatch
     local lastImpregnate = data:getLastImpregnatePeriod(nil)
 
-    if not lastImpregnate then
+    if not lastImpregnate or lastImpregnate == -1 then
         return nil
     end
 
-    if lastImpregnate >= 0 then
+    if lastImpregnate == 0 then
         if animal:haveMatingSeason() and not animal:isInMatingSeason() then
             return getText("IGUI_No")
         else

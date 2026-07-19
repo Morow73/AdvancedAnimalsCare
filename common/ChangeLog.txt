@@ -42,3 +42,9 @@
 [22/06/2026]
 - Fix error for access on animal info if the animal is in hutch.
 [ ------ ]
+
+[19/07/2026]
+- Add checkbox option for show highlight animals.
+- Fix progress bar start display.
+- Fix last impregnate period for to young male.
+[ ------ ]

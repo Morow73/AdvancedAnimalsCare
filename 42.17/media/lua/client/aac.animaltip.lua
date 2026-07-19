@@ -57,14 +57,18 @@ end
 ---create tooltip instance.
 ---@return ISToolTip
 function AACAnimalToolTip:new()
-    local o = ISToolTip.new(self) ---@class ISToolTip
-    o.description = ""
-    o.defaultMyWidth = 250
-    o.maxLineWidth = 250
-    o.followMouse = true
-    o.progressBars = {}
-    o.spacing = 1
-    return o
+    local object = {}
+
+    object = ISToolTip:new() ---@class ISToolTip
+    setmetatable(object, self)
+    self.__index = self
+    object.description = ""
+    object.defaultMyWidth = 250
+    object.maxLineWidth = 250
+    object.followMouse = true
+    object.progressBars = {}
+    object.spacing = 1
+    return object
 end
 
 ---clear description tooltip.

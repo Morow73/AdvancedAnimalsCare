@@ -1,5 +1,4 @@
 require "ISUI/ISToolTip"
-require "aac.animaltip"
 
 AAC = AAC or {}
 
@@ -7,7 +6,7 @@ local state = {
     CurrentAnimalTooltip = nil,
     ContextMenuOpen = false,
     SelectedAnimals = nil,
-    contextMenuState = nil,
+    contextMenuState = nil
 }
 
 ---wrapper for hooking methods
@@ -192,7 +191,7 @@ local function SetAnimalTooltipText(animal, playerNum)
 
             if (showPregnancyTime and stage ~= getText("IGUI_No")) or skillLvl > 2 then
                 local time = AAC.STAGE.GetAnimalPregnancyTime(animal)
-                if time then
+                if time > 0.08 then
                     state.CurrentAnimalTooltip:addDescriptionProgress(getText("IGUI_AAC_Animal_PregnancyTime"), time,
                         { barColor = { r = 0.8, g = 0.85, b = 1 } })
                 end
@@ -266,19 +265,22 @@ local function AnimalsContextMenu(playerNum, animal, isBody)
 
     if not context then return end
 
+    state.contextMenuState = function()
+        return context:getIsVisible()
+    end
+
     if isBody then
         ---@cast animal IsoDeadBody
         AnimalContextMenu.doAnimalBodyMenu(context, playerNum, animal)
+        return
     elseif animal:getHutch() then
         ---@cast animal IsoAnimal
         context:addOption(getText("ContextMenu_AnimalInfo"), animal, AnimalContextMenu.onAnimalInfo, animal, playerNum)
+        return
     else
         ---@cast animal IsoAnimal
         AnimalContextMenu.doMenu(playerNum, context, animal)
-    end
-
-    state.contextMenuState = function()
-        return context:getIsVisible()
+        return
     end
 end
 
@@ -323,9 +325,24 @@ local function BasePanel()
         end
     end)
 
+    local tickBox = nil
+
     HookMethod(AnimalZoneUI, "render", function(self, original)
-        original(self)
-        GetAnimalsInZone(self)
+        if original then original(self) end
+
+        if not tickBox then
+            tickBox = AAC.PANEL_BUTTON:newTickBox(self)
+        end
+
+        if tickBox then
+            local showHighlights = tickBox.selected[1]
+
+            if showHighlights then
+                GetAnimalsInZone(self)
+            else
+                ClearAnimalsInZone(self)
+            end
+        end
     end)
 
     HookMethod(AnimalZoneUI, "close", function(self, original)
@@ -338,6 +355,7 @@ local function BasePanel()
         ClearAnimalsInZone(self)
         HideCurrentAnimalTooltip()
         state.ContextMenuOpen = false
+        tickBox = nil
 
         if original then original(self) end
     end)
