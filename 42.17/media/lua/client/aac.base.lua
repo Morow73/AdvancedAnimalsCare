@@ -170,7 +170,8 @@ local function SetAnimalTooltipText(animal, playerNum)
         local stage = AAC.STAGE.GetAnimalPregnancyStage(animal)
         local milkStage = AAC.STAGE.GetAnimalMilkStage(animal)
 
-        state.CurrentAnimalTooltip:addDescriptionKeyValue(getText("UI_characreation_gender"), getText("IGUI_Animal_Female"),
+        state.CurrentAnimalTooltip:addDescriptionKeyValue(getText("UI_characreation_gender"),
+            getText("IGUI_Animal_Female"),
             { valueColor = { r = 1, g = 0.8, b = 0.8 } })
 
         if showMatingSeason or skillLvl > 4 then
@@ -325,17 +326,13 @@ local function BasePanel()
         end
     end)
 
-    local tickBox = nil
-
     HookMethod(AnimalZoneUI, "render", function(self, original)
-        if original then original(self) end
-
-        if not tickBox then
-            tickBox = AAC.PANEL_BUTTON:newTickBox(self)
+        if not self.tickBox then
+            self.tickBox = AAC.PANEL_BUTTON:newTickBox(self)
         end
 
-        if tickBox then
-            local showHighlights = tickBox.selected[1]
+        if self.tickBox then
+            local showHighlights = self.tickBox.selected[1]
 
             if showHighlights then
                 GetAnimalsInZone(self)
@@ -343,6 +340,8 @@ local function BasePanel()
                 ClearAnimalsInZone(self)
             end
         end
+
+        original(self)
     end)
 
     HookMethod(AnimalZoneUI, "close", function(self, original)
@@ -355,7 +354,13 @@ local function BasePanel()
         ClearAnimalsInZone(self)
         HideCurrentAnimalTooltip()
         state.ContextMenuOpen = false
-        tickBox = nil
+
+        if self.tickBox then
+            self.tickBox:removeFromUIManager()
+            self.tickBox = nil
+            print("Removed tickbox from UIManager")
+        end
+
 
         if original then original(self) end
     end)
