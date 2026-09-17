@@ -48,3 +48,7 @@
 - Fix progress bar start display.
 - Fix last impregnate period for to young male.
 [ ------ ]
+
+[17/09/2026]
+- Add comboxbox for sorted animals list (natif, gender, pregnancy, age, petable).
+[ ------ ]

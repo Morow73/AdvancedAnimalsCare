@@ -8,6 +8,8 @@
     "IGUI_AAC_Animal_Stress": "Stress",
     "IGUI_AAC_Animal_Health": "Sundhed",
     "IGUI_AAC_Animal_Pregnant": "Gravid",
+    "IGUI_AAC_Animal_Native": "Indfødt",
+    "IGUI_AAC_Animal_Petable": "Kan klappes",
     "IGUI_AAC_Choice_Status_Show": "Aktivér for at vise statuser. Deaktiveret som standard, afhænger af niveau.",
     "IGUI_AAC_Show_Pregnancy_Stage": "Vis graviditetsfase",
     "IGUI_AAC_Show_Milk_Stage": "Vis mælkefase",

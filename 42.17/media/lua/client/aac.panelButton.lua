@@ -1,4 +1,5 @@
 require "ISUI/ISTickBox"
+require "ISUI/ISComboBox"
 
 AAC = AAC or {}
 AAC.PANEL_BUTTON = AAC.PANEL_BUTTON or {}
@@ -10,7 +11,6 @@ local FONT_HGT_SMALL = getTextManager():getFontHeight(UIFont.NewSmall)
 ---@param parent ISDesignationZoneAnimalZoneUI
 ---@return ISTickBox
 function AAC.PANEL_BUTTON:newTickBox(parent)
-    print(parent:getX(), parent:getBottom())
     self.tickBox = ISTickBox:new(parent.animalPanel:getX() + 130, parent.animalPanel:getBottom() + 5, 100, FONT_HGT_SMALL, "", parent)
     self.tickBox:initialise()
     self.tickBox:instantiate()
@@ -22,4 +22,22 @@ function AAC.PANEL_BUTTON:newTickBox(parent)
     parent:addChild(self.tickBox)
     self.tickBox:addOption(getText("IGUI_AAC_SHOW_HIGHLIGHT"))
     return self.tickBox
+end
+
+---create combobox
+---@param parent ISDesignationZoneAnimalZoneUI
+---@return ISComboBox
+function AAC.PANEL_BUTTON:newComboBox(parent)
+    self.comboBox = ISComboBox:new(parent.animalPanel:getX() + 300, parent.animalPanel:getBottom() + 5, 100, FONT_HGT_SMALL, parent)
+    self.comboBox:initialise()
+
+    parent:addChild(self.comboBox)
+
+    local keys = {"IGUI_AAC_Animal_Native", "UI_characreation_gender", "IGUI_AAC_Animal_Pregnant", "IGUI_char_Age", "IGUI_AAC_Animal_Petable"}
+
+    for _,value in pairs(keys) do
+        self.comboBox:addOption(getText(value))
+    end
+
+    return self.comboBox
 end

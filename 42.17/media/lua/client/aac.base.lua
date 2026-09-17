@@ -331,6 +331,11 @@ local function BasePanel()
             self.tickBox = AAC.PANEL_BUTTON:newTickBox(self)
         end
 
+        if not self.comboBox then
+            self.comboBox = AAC.PANEL_BUTTON:newComboBox(self)
+            self._aac_lastSelectedText = self.comboBox:getSelectedText()
+        end
+
         if self.tickBox then
             local showHighlights = self.tickBox.selected[1]
 
@@ -341,7 +346,112 @@ local function BasePanel()
             end
         end
 
+        if self.comboBox and self.zone then
+            local selectedText = self.comboBox:getSelectedText()
+
+            if selectedText ~= self._aac_lastSelectedText then
+                self._aac_lastSelectedText = selectedText
+                self:updateAnimals()
+            end
+        end
+
         original(self)
+    end)
+
+    HookMethod(AnimalZoneUI, "updateAnimals", function(self, original)
+        if original then original(self) end
+
+        if not self.comboBox or not self.zone or not self.animalbuttons or not self.animalLabels then
+            return
+        end
+
+        local selectedText = self.comboBox:getSelectedText()
+        if not selectedText then
+            return
+        end
+
+        local animalEntries = {}
+        local corpseEntries = {}
+
+        for _, button in ipairs(self.animalbuttons) do
+            if button and button.animal then
+                if instanceof(button.animal, "IsoDeadBody") then
+                    table.insert(corpseEntries, button.animal)
+                else
+                    table.insert(animalEntries, button.animal)
+                end
+            end
+        end
+
+        local sortedAnimals = AAC.UTILS.SortedAnimalList(selectedText, {
+            animals = animalEntries,
+            corpses = corpseEntries,
+        })
+
+        if not sortedAnimals then
+            return
+        end
+
+        local buttonByAnimal = {}
+        local labelByAnimal = {}
+
+        for _, button in ipairs(self.animalbuttons) do
+            if button and button.animal then
+                buttonByAnimal[button.animal] = button
+            end
+        end
+
+        for _, label in ipairs(self.animalLabels) do
+            if label and label.animal then
+                labelByAnimal[label.animal] = label
+            end
+        end
+
+        local reorderedButtons = {}
+        local reorderedLabels = {}
+
+        for _, animal in ipairs(sortedAnimals.animals or {}) do
+            local button = buttonByAnimal[animal]
+            local label = labelByAnimal[animal]
+
+            if button then
+                table.insert(reorderedButtons, button)
+                table.insert(reorderedLabels, label)
+            end
+        end
+
+        for _, animal in ipairs(sortedAnimals.corpses or {}) do
+            local button = buttonByAnimal[animal]
+            local label = labelByAnimal[animal]
+
+            if button then
+                table.insert(reorderedButtons, button)
+                table.insert(reorderedLabels, label)
+            end
+        end
+
+        if #reorderedButtons == 0 then
+            return
+        end
+
+        self.animalbuttons = reorderedButtons
+        self.animalLabels = reorderedLabels
+
+        local y = 1
+        for index, button in ipairs(self.animalbuttons) do
+            if button then
+                button:setY(y + self.itemPadY)
+            end
+
+            local label = self.animalLabels[index]
+            if label then
+                label:setY(y + self.itemPadY)
+            end
+
+            y = y + self.itemHgt
+        end
+
+        self.animalPanel:setScrollHeight(y)
     end)
 
     HookMethod(AnimalZoneUI, "close", function(self, original)
@@ -358,9 +468,13 @@ local function BasePanel()
         if self.tickBox then
             self.tickBox:removeFromUIManager()
             self.tickBox = nil
-            print("Removed tickbox from UIManager")
         end
 
+        if self.comboBox then
+            self.comboBox:removeFromUIManager()
+            self.comboBox = nil
+            self._aac_lastSelectedText = nil
+        end
 
         if original then original(self) end
     end)

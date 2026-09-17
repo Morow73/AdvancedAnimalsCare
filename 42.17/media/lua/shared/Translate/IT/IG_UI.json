@@ -8,6 +8,8 @@
     "IGUI_AAC_Animal_Stress": "Stress",
     "IGUI_AAC_Animal_Health": "Salute",
     "IGUI_AAC_Animal_Pregnant": "Incinta",
+    "IGUI_AAC_Animal_Native": "Nativo",
+    "IGUI_AAC_Animal_Petable": "Accarezzabile",
     "IGUI_AAC_Choice_Status_Show": "Abilita per visualizzare gli stati. Disabilitato per impostazione predefinita, dipende dal livello.",
     "IGUI_AAC_Show_Pregnancy_Stage": "Mostra lo stadio della gravidanza",
     "IGUI_AAC_Show_Milk_Stage": "Mostra lo stadio della lattazione",
