@@ -8,7 +8,6 @@
     "IGUI_AAC_Animal_Stress": "Stres",
     "IGUI_AAC_Animal_Health": "Sănătate",
     "IGUI_AAC_Animal_Pregnant": "Însărcinată",
-    "IGUI_AAC_Animal_Native": "Nativ",
     "IGUI_AAC_Animal_Petable": "Se poate mângâia",
     "IGUI_AAC_Choice_Status_Show": "Activează pentru a afișa stările. Dezactivat implicit, depinde de nivel.",
     "IGUI_AAC_Show_Pregnancy_Stage": "Afișează stadiul sarcinii",
@@ -18,5 +17,7 @@
     "IGUI_AAC_Animal_Milk": "Lapte",
     "IGUI_AAC_Show_Pregnancy_Time": "Afișează timpul rămas de sarcină",
     "IGUI_AAC_Animal_PregnancyTime": "Progresul sarcinii.",
-    "IGUI_AAC_SHOW_HIGHLIGHT": "Afișează evidențierile"
+    "IGUI_AAC_SHOW_HIGHLIGHT": "Afișează evidențierile",
+    "IGUI_AAC_Combobox_Filter": "Filtru:",
+    "IGUI_AAC_Combobox_Filter_Native": "Nativ"
 }

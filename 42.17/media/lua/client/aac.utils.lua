@@ -123,9 +123,9 @@ function AAC.UTILS.SortedAnimalList(index, animalList)
     local animals = ToArray(animalList and animalList.animals)
     local corpses = ToArray(animalList and animalList.corpses)
 
-    if selected == "Natif" then
+    if selected == getText("IGUI_AAC_Combobox_Filter_Native") then
         table.sort(animals, compareAnimalsByName)
-    elseif selected == "Gender" then
+    elseif selected == getText("UI_characreation_gender") then
         table.sort(animals, function(animalA, animalB)
             local isFemaleA = animalA and animalA:isFemale() or false
             local isFemaleB = animalB and animalB:isFemale() or false
@@ -136,7 +136,7 @@ function AAC.UTILS.SortedAnimalList(index, animalList)
 
             return compareAnimalsByName(animalA, animalB)
         end)
-    elseif selected == "Pregnency" then
+    elseif selected == getText("IGUI_AAC_Animal_Pregnant") then
         table.sort(animals, function(animalA, animalB)
             local isPregnantA = animalA and animalA:getData() and animalA:getData():isPregnant() or false
             local isPregnantB = animalB and animalB:getData() and animalB:getData():isPregnant() or false
@@ -154,7 +154,7 @@ function AAC.UTILS.SortedAnimalList(index, animalList)
 
             return compareAnimalsByName(animalA, animalB)
         end)
-    elseif selected == "Age" then
+    elseif selected == getText("IGUI_char_Age") then
         table.sort(animals, function(animalA, animalB)
             local ageA = animalA and animalA:getAge() or 0
             local ageB = animalB and animalB:getAge() or 0
@@ -165,7 +165,7 @@ function AAC.UTILS.SortedAnimalList(index, animalList)
 
             return compareAnimalsByName(animalA, animalB)
         end)
-    elseif selected == "Petable" then
+    elseif selected == getText("IGUI_AAC_Animal_Petable") then
         table.sort(animals, function(animalA, animalB)
             local isPetableA = animalA and animalA:petTimerDone() or false
             local isPetableB = animalB and animalB:petTimerDone() or false

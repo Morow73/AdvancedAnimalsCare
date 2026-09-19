@@ -52,3 +52,12 @@
 [17/09/2026]
 - Add comboxbox for sorted animals list (natif, gender, pregnancy, age, petable).
 [ ------ ]
+
+[19/09/2026]
+- Fix filter list.
+- Add Label for combobox.
+[ ------ ]
+
+[19/09/2026]
+- Add missing translate for combobox filter label.
+[ ------ ]

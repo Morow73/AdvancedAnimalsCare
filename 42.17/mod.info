@@ -1,8 +1,8 @@
 name=Advanced Animals Care
 id=advancedanimalscare
 description=Enhances the ranch UI: highlights stressed / dead animals and displays health, pregnancy, and pettable status.
-version=1.5.0
-modversion=1.5.0
+version=1.5.2
+modversion=1.5.2
 poster=poster.png
 icon=icons.png
 author=Morow

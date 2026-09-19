@@ -8,7 +8,6 @@
     "IGUI_AAC_Animal_Stress": "Estrès",
     "IGUI_AAC_Animal_Health": "Salut",
     "IGUI_AAC_Animal_Pregnant": "Embarassada",
-    "IGUI_AAC_Animal_Native": "Natiu",
     "IGUI_AAC_Animal_Petable": "Acariciable",
     "IGUI_AAC_Choice_Status_Show": "Activa per mostrar els estats. Desactivat per defecte, depèn del nivell.",
     "IGUI_AAC_Show_Pregnancy_Stage": "Mostra l'etapa de l'embaràs",
@@ -18,5 +17,7 @@
     "IGUI_AAC_Animal_Milk": "Llet",
     "IGUI_AAC_Show_Pregnancy_Time": "Mostra el temps de gestació restant",
     "IGUI_AAC_Animal_PregnancyTime": "Progrés de la gestació.",
-    "IGUI_AAC_SHOW_HIGHLIGHT": "Mostra ressaltats"
+    "IGUI_AAC_SHOW_HIGHLIGHT": "Mostra ressaltats",
+    "IGUI_AAC_Combobox_Filter": "Filtre:",
+    "IGUI_AAC_Combobox_Filter_Native": "Natiu"
 }

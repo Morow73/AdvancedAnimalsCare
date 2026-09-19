@@ -8,7 +8,6 @@
     "IGUI_AAC_Animal_Stress": "Stress",
     "IGUI_AAC_Animal_Health": "Kalusugan",
     "IGUI_AAC_Animal_Pregnant": "Buntis",
-    "IGUI_AAC_Animal_Native": "Native",
     "IGUI_AAC_Animal_Petable": "Pwedeng hawakan",
     "IGUI_AAC_Choice_Status_Show": "I-enable upang ipakita ang mga status. Hindi pinagana sa default, depende sa level.",
     "IGUI_AAC_Show_Pregnancy_Stage": "Ipakita ang yugto ng pagbubuntis",
@@ -18,5 +17,7 @@
     "IGUI_AAC_Animal_Milk": "Gatas",
     "IGUI_AAC_Show_Pregnancy_Time": "Ipakita ang natitirang oras ng pagbubuntis",
     "IGUI_AAC_Animal_PregnancyTime": "Pag-unlad ng pagbubuntis.",
-    "IGUI_AAC_SHOW_HIGHLIGHT": "Ipakita ang highlight"
+    "IGUI_AAC_SHOW_HIGHLIGHT": "Ipakita ang highlight",
+    "IGUI_AAC_Combobox_Filter": "Filter:",
+    "IGUI_AAC_Combobox_Filter_Native": "Native"
 }

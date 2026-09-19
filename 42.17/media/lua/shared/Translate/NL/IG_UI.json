@@ -8,7 +8,6 @@
     "IGUI_AAC_Animal_Stress": "Stress",
     "IGUI_AAC_Animal_Health": "Gezondheid",
     "IGUI_AAC_Animal_Pregnant": "Zwanger",
-    "IGUI_AAC_Animal_Native": "Inheems",
     "IGUI_AAC_Animal_Petable": "Aaibaar",
     "IGUI_AAC_Choice_Status_Show": "Inschakelen om statussen te tonen. Standaard uitgeschakeld, afhankelijk van het niveau.",
     "IGUI_AAC_Show_Pregnancy_Stage": "Toon zwangerschap stadium",
@@ -18,5 +17,7 @@
     "IGUI_AAC_Animal_Milk": "Melk",
     "IGUI_AAC_Show_Pregnancy_Time": "Toon resterende zwangerschapsduur",
     "IGUI_AAC_Animal_PregnancyTime": "Zwangerschapsvoortgang.",
-    "IGUI_AAC_SHOW_HIGHLIGHT": "Toon markeringen"
+    "IGUI_AAC_SHOW_HIGHLIGHT": "Toon markeringen",
+    "IGUI_AAC_Combobox_Filter": "Filter:",
+    "IGUI_AAC_Combobox_Filter_Native": "Inheems"
 }

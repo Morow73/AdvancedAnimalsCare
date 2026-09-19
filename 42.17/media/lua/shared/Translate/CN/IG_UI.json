@@ -8,7 +8,6 @@
     "IGUI_AAC_Animal_Stress": "压力",
     "IGUI_AAC_Animal_Health": "健康",
     "IGUI_AAC_Animal_Pregnant": "怀孕",
-    "IGUI_AAC_Animal_Native": "原生",
     "IGUI_AAC_Animal_Petable": "可抚摸",
     "IGUI_AAC_Choice_Status_Show": "启用以显示状态。默认禁用，取决于等级。",
     "IGUI_AAC_Show_Pregnancy_Stage": "显示怀孕阶段",
@@ -18,5 +17,7 @@
     "IGUI_AAC_Animal_Milk": "奶",
     "IGUI_AAC_Show_Pregnancy_Time": "显示剩余妊娠时间",
     "IGUI_AAC_Animal_PregnancyTime": "怀孕进度。",
-    "IGUI_AAC_SHOW_HIGHLIGHT": "显示高亮"
+    "IGUI_AAC_SHOW_HIGHLIGHT": "显示高亮",
+    "IGUI_AAC_Combobox_Filter": "筛选：",
+    "IGUI_AAC_Combobox_Filter_Native": "原生"
 }
