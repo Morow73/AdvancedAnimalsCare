@@ -168,7 +168,6 @@ local function SetAnimalTooltipText(animal, playerNum)
         local showMatingSeason = checkboxOptions['showMatingSeason']
         local showMilkStage = checkboxOptions['showMilkStage']
         local stage = AAC.STAGE.GetAnimalPregnancyStage(animal)
-        local milkStage = AAC.STAGE.GetAnimalMilkStage(animal)
 
         state.CurrentAnimalTooltip:addDescriptionKeyValue(getText("UI_characreation_gender"),
             getText("IGUI_Animal_Female"),
@@ -199,9 +198,13 @@ local function SetAnimalTooltipText(animal, playerNum)
             end
         end
 
-        if milkStage and milkStage ~= "" and (showMilkStage or skillLvl > 2) then
-            state.CurrentAnimalTooltip:addDescriptionKeyValue(getText("IGUI_AAC_Animal_Milk"), milkStage,
-                { valueColor = { r = 0.8, g = 0.85, b = 1 } })
+        if (showMilkStage or skillLvl > 2) then
+            local milkStage = AAC.STAGE.GetAnimalMilkStage(animal)
+
+            if milkStage and milkStage ~= "" then
+                state.CurrentAnimalTooltip:addDescriptionKeyValue(getText("IGUI_AAC_Animal_Milk"), milkStage,
+                    { valueColor = { r = 0.8, g = 0.85, b = 1 } })
+            end
         end
     else
         local showImpregnationReadiness = checkboxOptions['showImpregnationReadiness']

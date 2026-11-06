@@ -61,3 +61,7 @@
 [19/09/2026]
 - Add missing translate for combobox filter label.
 [ ------ ]
+
+[06/11/2026]
+- Fix of the status that appears for animals that cannot be treated.
+[ ------ ]

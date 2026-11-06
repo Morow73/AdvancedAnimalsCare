@@ -50,12 +50,22 @@ function AAC.STAGE.GetAnimalMilkStage(animal)
     end
 
     local data = animal:getData()
-    local canHaveMilk = data:canHaveMilk()
 
-    if not canHaveMilk then return "" end
+    if not data then
+        return ""
+    end
 
-    local milkQuantity = data:getMilkQuantity()
-    local maxMilk = data:getMaxMilk()
+    if not animal:canBeMilked() or not data:canHaveMilk() then
+        return ""
+    end
+
+    local milkQuantity = data:getMilkQuantity() or 0
+
+    if milkQuantity <= 0.1 then
+        return ""
+    end
+
+    local maxMilk = data:getMaxMilk() or 0
     local stage
 
     if milkQuantity > maxMilk then
