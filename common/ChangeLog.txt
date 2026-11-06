@@ -63,5 +63,5 @@
 [ ------ ]
 
 [06/11/2026]
-- Fix of the status that appears for animals that cannot be treated.
+- Fix of the status displayed for animals that cannot be milked.
 [ ------ ]
